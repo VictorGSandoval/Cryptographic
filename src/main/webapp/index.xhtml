@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"    
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:head>
+        <title>CriptoSandoval</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+
+        <h:form id="form">
+            <div class="card">
+                <p:tabMenu activeIndex="#{param.i}">
+                    <p:menuitem value="Cifrar" outcome="/index.xhtml" icon="pi pi-fw pi-lock">
+                        <f:param name="i" value="0"/>
+                    </p:menuitem>
+                    <p:menuitem value="Descifrar" outcome="/descifrado.xhtml" icon="pi pi-fw pi-unlock">
+                        <f:param name="i" value="1"/>
+                    </p:menuitem>
+                </p:tabMenu>
+            </div>
+
+            <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
+            <div class="card ">
+                <h1 class="p-mt-0">   Trabajo 4 - Aplicación Criptográfica</h1>
+                        <p class="p-m-0">
+                            <p:panelGrid columns="2" layout="flex" >
+                                <p:outputLabel value="Texto"  />
+
+                                <p:inputTextarea value="#{criptoC.model.input}" rows="1" cols="33" required="true" />
+                                <p:outputLabel value="Resultado Cifrado" />
+                                <a class="pi pi-lock" ></a>  
+                                <a class="pi pi-lock" ></a>  
+                                <p:inputTextarea  value="#{criptoC.model.RInput}" rows="6" cols="33" placeholder="Cifrado"/>
+
+                            </p:panelGrid>
+
+                            <p:commandButton  icon="pi pi-check-circle" value="Cifrar" action="#{criptoC.cifrar()}"  update="form"/>
+                            <a></a>
+                            <p:commandButton  icon="pi pi-minus-circle" value="Limpiar" action="#{criptoC.limpiar()}"  update="form"/>
+                        </p>
+
+            </div>
+        </h:form>
+    </h:body>
+</html>
